@@ -17,7 +17,10 @@ namespace YandexDirectAPI.Net.Test
                 @method = "get",
                 @params = new YandexAPIParameters
                 {
-                    SelectionCriteria = new SelectionCriterias(),
+                    SelectionCriteria = new SelectionCriterias() 
+                    {
+                         Ids = new long?[] { 402835 }
+                    },
                     FieldNames = new string[] 
                     { 
                         "Id", 

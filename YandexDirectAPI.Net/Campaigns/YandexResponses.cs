@@ -15,6 +15,7 @@ namespace YandexDirectAPI.Net.Campaigns
     public class Result
     {
         public List<Campaigns> Campaigns { get; set; }
+        public long LimitedBy { get; set; }
     }
 
     public class StatusMessage
@@ -65,45 +66,86 @@ namespace YandexDirectAPI.Net.Campaigns
         [JsonProperty(Order = 11)]
         public CurrencyEnum Currency { get; set; }
 
-        [MaxLength(255), Required]
-        public string ClientInfo { get; set; }
-        public Notification Notification { get; set; }
-        [DefaultValue("Europe/Moscow")]
-        public string TimeZone { get; set; }
-        
-        
+        [JsonProperty(Order = 12)]
+        public FundsParam Funds { get; set; }
+
+        [JsonProperty(Order = 13)]
+        public CampaignAssistant RepresentedBy { get; set; }
+
+        [JsonProperty(Order = 14)]
         public DailyBudget DailyBudget { get; set; }
+
         /// <summary>
         /// Дата окончания показов объявлений в формате YYYY-MM-DD.
         /// </summary>
         [Required]
+        [JsonProperty(Order = 15)]
         public string EndDate { get; set; }
-        public string[] NegativeKeywords { get; set; }
-        public string[] BlockedIps { get; set; }
-        public string[] ExcludedSites { get; set; }
+
+        [JsonProperty(Order = 16)]
+        public NegativeKeywords NegativeKeywords { get; set; }
+
+        [JsonProperty(Order = 17)]
+        public BlockedIps BlockedIps { get; set; }
+        
+        [JsonProperty(Order = 18)]
+        public ExcludedSites ExcludedSites { get; set; }
+
         #region Виды рекламных объявлений
         /// <summary>
         /// Текстово-графические объявления
         /// </summary>
+        [JsonProperty(Order = 19)]
         public TextCampaignAddItem TextCampaign { get; set; }
         /// <summary>
         /// Реклама мобильных приложений
         /// </summary>
+        [JsonProperty(Order = 20)]
         public MobileAppCampaignAddItem MobileAppCampaign { get; set; }
         /// <summary>
         /// Динамические объявления
         /// </summary>
+        [JsonProperty(Order = 21)]
         public DynamicTextCampaignAddItem DynamicTextCampaign { get; set; }
         /// <summary>
         /// Медийная кампания
         /// </summary>
+        [JsonProperty(Order = 22)]
         public CpmBannerCampaignAddItem CpmBannerCampaign { get; set; }
         /// <summary>
         /// Смарт-баннеры
         /// </summary>
+        [JsonProperty(Order = 23)]
         public SmartCampaignAddItem SmartCampaign { get; set; }
         #endregion
-        public TimeTargetingAdd TimeTargeting { get; set; }
+
+        [JsonProperty(Order = 24)]
+        [MaxLength(255), Required]
+        public string ClientInfo { get; set; }
+
+        [JsonProperty(Order = 25)]
+        public Notification Notification { get; set; }
+
+        [JsonProperty(Order = 26)]
+        public TimeTargeting TimeTargeting { get; set; }
+
+        [JsonProperty(Order = 27)]
+        [DefaultValue("Europe/Moscow")]
+        public string TimeZone { get; set; }
+
+    }
+
+    public class NegativeKeywords
+    {
+        public string[] Items { get; set; }
+    }
+    public class BlockedIps
+    {
+        public string[] Items { get; set; }
+    }
+    public class ExcludedSites
+    {
+        public string[] Items { get; set; }
     }
 
     public class Statistics
@@ -115,7 +157,7 @@ namespace YandexDirectAPI.Net.Campaigns
         /// <summary>
         /// Количество кликов за время существования кампании.
         /// </summary>
-        public long Clicks { get; set; } 
+        public long Clicks { get; set; }
     }
 
     public enum CurrencyEnum
@@ -128,6 +170,47 @@ namespace YandexDirectAPI.Net.Campaigns
         TRY,
         UAH,
         USD
+    }
+
+    public class FundsParam
+    {
+        /// <summary>
+        /// Тип финансовых показателей кампании
+        /// </summary>
+        public CampaignFundsEnum Mode { get; set; }
+        /// <summary>
+        /// Финансовые показатели кампании, в случае если общий счет не подключен.
+        /// </summary>
+        public CampaignFundsParam CampaignFunds { get; set; }
+        /// <summary>
+        /// Финансовые показатели кампании, в случае если общий счет подключен.
+        /// </summary>
+        public SharedAccountFundsParam SharedAccountFunds { get; set; }
+    }
+    public enum CampaignFundsEnum
+    {
+        CAMPAIGN_FUNDS,
+        SHARED_ACCOUNT_FUNDS
+    }
+
+    public class CampaignFundsParam
+    {
+        public long Sum { get; set; }
+        public long Balance { get; set; }
+        public long BalanceBonus { get; set; }
+        public long SumAvailableForTransfer { get; set; }
+    }
+
+    public class CampaignAssistant
+    {
+        public string Manager { get; set; }
+        public string Agency { get; set; }
+    }
+
+    public class SharedAccountFundsParam
+    {
+        public long Refund { get; set; }
+        public long Spend { get; set; }
     }
 
     public class Notification
@@ -172,9 +255,24 @@ namespace YandexDirectAPI.Net.Campaigns
     }
     #endregion
 
-    public class TimeTargetingAdd
+    public class TimeTargeting
     {
+        public Shedule Shedule { get; set; }
+        public YesNoEnum ConsiderWorkingWeekends { get; set; }
+        public TimeTargetingOnPublicHolidays HolidaysSchedule {get;set;}
+    }
 
+    public class TimeTargetingOnPublicHolidays
+{
+        public YesNoEnum SuspendOnHolidays { get; set; }
+        public int BidPercent { get; set; }
+        public int StartHour { get; set; }
+        public int EndHour { get; set; }
+    }
+
+    public class Shedule
+    {
+        public string[] Items { get; set; }
     }
 
     public class SmsSettings
