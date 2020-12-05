@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YandexDirectAPI.Net", "YandexDirectAPI.Net\YandexDirectAPI.Net.csproj", "{2FC7B49A-2545-4BC6-972A-9205A28F27C4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E8D0826F-D65C-44F7-87C3-1C52F410FA5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YandexDirectAPI.Net.Test", "YandexDirectAPI.Net.Test\YandexDirectAPI.Net.Test.csproj", "{95D186D3-ED2E-48E0-BFD0-E461F33EC7A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{2FC7B49A-2545-4BC6-972A-9205A28F27C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FC7B49A-2545-4BC6-972A-9205A28F27C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FC7B49A-2545-4BC6-972A-9205A28F27C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95D186D3-ED2E-48E0-BFD0-E461F33EC7A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95D186D3-ED2E-48E0-BFD0-E461F33EC7A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95D186D3-ED2E-48E0-BFD0-E461F33EC7A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95D186D3-ED2E-48E0-BFD0-E461F33EC7A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{95D186D3-ED2E-48E0-BFD0-E461F33EC7A3} = {E8D0826F-D65C-44F7-87C3-1C52F410FA5A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA0B2AA7-9255-4FEC-B5A4-9EA262CBEAC4}
