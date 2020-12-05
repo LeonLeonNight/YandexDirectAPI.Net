@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using YandexDirectAPI.Net.Campaigns;
 
 namespace YandexDirectAPI.Net.Test
 {

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace YandexDirectAPI.Net
+namespace YandexDirectAPI.Net.Campaigns
 {
     public class YandexAPIResponse : StatusMessage
     {
@@ -13,7 +14,7 @@ namespace YandexDirectAPI.Net
 
     public class Result
     {
-        public Campaigns Campaigns { get; set; }
+        public List<Campaigns> Campaigns { get; set; }
     }
 
     public class StatusMessage
@@ -23,19 +24,54 @@ namespace YandexDirectAPI.Net
 
     public class Campaigns
     {
-        public string Id { get; set; }
-        [MaxLength(255), Required]
-        public string ClientInfo { get; set; }
-        public Notification Notification { get; set; }
-        [DefaultValue("Europe/Moscow")]
-        public string TimeZone { get; set; }
+        [JsonProperty(Order = 1)]
+        public long Id { get; set; }
+
+        [JsonProperty(Order = 2)]
         [MaxLength(255), Required]
         public string Name { get; set; }
         /// <summary>
         /// Дата начала показов объявлений в формате YYYY-MM-DD. Должна быть не меньше текущей даты.
         /// </summary>
+
+        [JsonProperty(Order = 3)]
         [Required]
         public string StartDate { get; set; }
+
+        [JsonProperty(Order = 4)]
+        public CampaignTypeEnum Types { get; set; }
+
+        [JsonProperty(Order = 5)]
+        public CampaignStateEnum States { get; set; }
+
+        [JsonProperty(Order = 6)]
+        public CampaignStatusSelectionEnum Statuses { get; set; }
+
+        [JsonProperty(Order = 7)]
+        public CampaignStatusPaymentEnum StatusesPayment { get; set; }
+
+        [JsonProperty(Order = 8)]
+        public string StatusClarification { get; set; }
+
+        [JsonProperty(Order = 9)]
+        public long? SourceId { get; set; }
+
+        [JsonProperty(Order = 10)]
+        public Statistics Statistics { get; set; }
+
+        /// <summary>
+        /// Валюта кампании.
+        /// </summary>
+        [JsonProperty(Order = 11)]
+        public CurrencyEnum Currency { get; set; }
+
+        [MaxLength(255), Required]
+        public string ClientInfo { get; set; }
+        public Notification Notification { get; set; }
+        [DefaultValue("Europe/Moscow")]
+        public string TimeZone { get; set; }
+        
+        
         public DailyBudget DailyBudget { get; set; }
         /// <summary>
         /// Дата окончания показов объявлений в формате YYYY-MM-DD.
@@ -68,6 +104,30 @@ namespace YandexDirectAPI.Net
         public SmartCampaignAddItem SmartCampaign { get; set; }
         #endregion
         public TimeTargetingAdd TimeTargeting { get; set; }
+    }
+
+    public class Statistics
+    {
+        /// <summary>
+        /// Количество показов за время существования кампании.
+        /// </summary>
+        public long Impressions { get; set; }
+        /// <summary>
+        /// Количество кликов за время существования кампании.
+        /// </summary>
+        public long Clicks { get; set; } 
+    }
+
+    public enum CurrencyEnum
+    {
+        RUB,
+        BYN,
+        CHF,
+        EUR,
+        KZT,
+        TRY,
+        UAH,
+        USD
     }
 
     public class Notification
