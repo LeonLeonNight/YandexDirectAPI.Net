@@ -71,15 +71,11 @@ namespace YandexDirectAPI.Net
                 parameters,
                 ct);
 
-            Log?.Invoke(
-                $"For endpoint: {Head.EndPoint} \n" +
-                $"Response: {JsonConvert.SerializeObject(responseContent, ContentSerializerSettings)}");
-
             var response = JsonConvert.DeserializeObject<YandexAPIResponse>(responseContent);
 
             Log?.Invoke(
                 $"For endpoint: {Head.EndPoint} \n" +
-                $"End: {JsonConvert.SerializeObject(response, ContentSerializerSettings)}");
+                $"Response: {JsonConvert.SerializeObject(response, ContentSerializerSettings)}");
             return response;
         }
 
@@ -96,11 +92,7 @@ namespace YandexDirectAPI.Net
                 : string.Empty;
 
             var request = GetHeaders(endPointUrl, httpMethod, content);
-            Log?.Invoke($"{JsonConvert.SerializeObject(request.Headers)}");
-
-            RawLog?.Invoke(
-                $"{endPointUrl} \n" +
-                $"Start: {ClearText(content)}");
+            
             var response = await HttpClient.SendAsync(request, ct).ConfigureAwait(false);
 
             var responseContent = !response.Content.Equals(null)

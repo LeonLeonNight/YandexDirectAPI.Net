@@ -19,18 +19,32 @@ namespace YandexDirectAPI.Net.Test
                 {
                     SelectionCriteria = new SelectionCriterias() 
                     {
-                         Ids = new long?[] { 402835 }
+                        Ids = new long?[] { 402835 } // 402836, 402837
                     },
                     FieldNames = new string[] 
-                    { 
-                        "Id", 
-                        "Name", 
-                        "ClientInfo", 
-                        "Notification", 
-                        "TimeZone", 
-                        "DailyBudget", 
-                        "EndDate", 
-                        "NegativeKeywords" 
+                    {
+                        "BlockedIps",
+                        "ExcludedSites",
+                        "Currency",
+                        "DailyBudget",
+                        "Notification",
+                        "EndDate",
+                        "Funds",
+                        "ClientInfo",
+                        "Id",
+                        "Name",
+                        "NegativeKeywords",
+                        "RepresentedBy",
+                        "StartDate",
+                        "Statistics",
+                        "State",
+                        "Status",
+                        "StatusPayment",
+                        "StatusClarification",
+                        "SourceId",
+                        "TimeTargeting",
+                        "TimeZone",
+                        "Type"
                     }
                 }
             };

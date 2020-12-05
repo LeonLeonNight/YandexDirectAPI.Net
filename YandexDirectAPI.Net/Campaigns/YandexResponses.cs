@@ -29,14 +29,12 @@ namespace YandexDirectAPI.Net.Campaigns
         public long Id { get; set; }
 
         [JsonProperty(Order = 2)]
-        [MaxLength(255), Required]
         public string Name { get; set; }
         /// <summary>
         /// Дата начала показов объявлений в формате YYYY-MM-DD. Должна быть не меньше текущей даты.
         /// </summary>
 
         [JsonProperty(Order = 3)]
-        [Required]
         public string StartDate { get; set; }
 
         [JsonProperty(Order = 4)]
@@ -78,7 +76,6 @@ namespace YandexDirectAPI.Net.Campaigns
         /// <summary>
         /// Дата окончания показов объявлений в формате YYYY-MM-DD.
         /// </summary>
-        [Required]
         [JsonProperty(Order = 15)]
         public string EndDate { get; set; }
 
@@ -120,7 +117,6 @@ namespace YandexDirectAPI.Net.Campaigns
         #endregion
 
         [JsonProperty(Order = 24)]
-        [MaxLength(255), Required]
         public string ClientInfo { get; set; }
 
         [JsonProperty(Order = 25)]
@@ -130,7 +126,6 @@ namespace YandexDirectAPI.Net.Campaigns
         public TimeTargeting TimeTargeting { get; set; }
 
         [JsonProperty(Order = 27)]
-        [DefaultValue("Europe/Moscow")]
         public string TimeZone { get; set; }
 
     }
