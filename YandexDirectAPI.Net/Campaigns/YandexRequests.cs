@@ -36,9 +36,6 @@ namespace YandexDirectAPI.Net.Campaigns
 
     public class LimitOffset
     {
-        /// <summary>
-        /// 
-        /// </summary>
         public long? Limit { get; set; }
         public long? Offset { get; set; }
     }

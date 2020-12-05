@@ -227,29 +227,6 @@ namespace YandexDirectAPI.Net.Campaigns
         DISTRIBUTED
     }
 
-    #region Описание моделей рекламных Объявлений 
-    public class TextCampaignAddItem
-    {
-
-    }
-    public class MobileAppCampaignAddItem
-    {
-
-    }
-    public class DynamicTextCampaignAddItem
-    {
-
-    }
-    public class CpmBannerCampaignAddItem
-    {
-
-    }
-    public class SmartCampaignAddItem
-    {
-
-    }
-    #endregion
-
     public class TimeTargeting
     {
         public Shedule Shedule { get; set; }
