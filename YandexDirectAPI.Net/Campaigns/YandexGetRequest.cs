@@ -4,12 +4,12 @@ using System.Text;
 
 namespace YandexDirectAPI.Net.Campaigns
 {
-    public class YandexAPIBody
+    public class YandexGetRequest
     {
         public string @method { get; set; }
-        public YandexAPIParameters @params { get; set; }
+        public YandexGetParameters @params { get; set; }
     }
-    public class YandexAPIParameters
+    public class YandexGetParameters
     {
         public SelectionCriterias SelectionCriteria { get; set; }
         public string[] FieldNames { get; set; }
@@ -23,6 +23,7 @@ namespace YandexDirectAPI.Net.Campaigns
 
     public class SelectionCriterias
     {
+
         /// <summary>
         /// Отбирать кампании с указанными идентификаторами. Не более 1000 элементов в массиве.
         /// </summary>

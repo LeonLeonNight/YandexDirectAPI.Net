@@ -47,7 +47,7 @@ namespace YandexDirectAPI.Net
 
         public void RouterEnpoint(
             YandexHeader header,
-            YandexAPIBody body)
+            YandexGetRequest body)
         {
             //switch (header.EndPoint)
             //{
@@ -56,7 +56,7 @@ namespace YandexDirectAPI.Net
         }
 
         public async Task<YandexAPIResponse> GetCompanies(
-            YandexAPIBody parameters,
+            YandexGetRequest parameters,
             CancellationToken ct = default)
         {
             parameters.method = Head.Method;
@@ -65,7 +65,31 @@ namespace YandexDirectAPI.Net
                 $"For endpoint: {Head.EndPoint} \n" +
                 $"Request: {JsonConvert.SerializeObject(parameters, ContentSerializerSettings)}");
 
-            var responseContent = await RestAsync(
+            var responseContent = await RestGetAsync(
+                Head.EndPoint,
+                HttpMethod.Post,
+                parameters,
+                ct);
+
+            var response = JsonConvert.DeserializeObject<YandexAPIResponse>(responseContent);
+
+            Log?.Invoke(
+                $"For endpoint: {Head.EndPoint} \n" +
+                $"Response: {JsonConvert.SerializeObject(response, ContentSerializerSettings)}");
+            return response;
+        }
+        
+        public async Task<YandexAPIResponse> UpdateCompany(
+            YandexUpdateRequest parameters,
+            CancellationToken ct = default)
+        {
+            parameters.method = Head.Method;
+
+            Log?.Invoke(
+                $"For endpoint: {Head.EndPoint} \n" +
+                $"Request: {JsonConvert.SerializeObject(parameters, ContentSerializerSettings)}");
+
+            var responseContent = await RestUpdateAsync(
                 Head.EndPoint,
                 HttpMethod.Post,
                 parameters,
@@ -79,10 +103,33 @@ namespace YandexDirectAPI.Net
             return response;
         }
 
-        public async Task<string> RestAsync(
+        public async Task<string> RestGetAsync(
             string endPointUrl,
             HttpMethod httpMethod,
-            YandexAPIBody model,
+            YandexGetRequest model,
+            CancellationToken ct)
+        {
+            HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var content = (model != null)
+                ? JsonConvert.SerializeObject(model, ContentSerializerSettings)
+                : string.Empty;
+
+            var request = GetHeaders(endPointUrl, httpMethod, content);
+            
+            var response = await HttpClient.SendAsync(request, ct).ConfigureAwait(false);
+
+            var responseContent = !response.Content.Equals(null)
+                    ? await response.Content.ReadAsStringAsync().ConfigureAwait(false)
+                    : null;
+
+            return responseContent;
+        }
+        
+        public async Task<string> RestUpdateAsync(
+            string endPointUrl,
+            HttpMethod httpMethod,
+            YandexUpdateRequest model,
             CancellationToken ct)
         {
             HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));

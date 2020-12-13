@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
+using YandexDirectAPI.Net.Campaigns;
 
 namespace YandexDirectAPI.Net.Test
 {
@@ -18,6 +19,9 @@ namespace YandexDirectAPI.Net.Test
             EndPoint = "campaigns",
             Method = "get"
         };
+
+        private static YandexGetRequest GetCurrent = YandexDirectModelTest.CurrentGetMethod;
+        private static YandexUpdateRequest UpdateCurrent = YandexDirectModelTest.CurrentUpdateMethod;
 
         public YandexDirectTest(ITestOutputHelper output)
         {
@@ -47,9 +51,14 @@ namespace YandexDirectAPI.Net.Test
         public async Task GetCompaniesList()
         {
             var client = GetYandexClient();
-            var yandexAPIData = new YandexDirectModelTest();
-            yandexAPIData.GenerateYandexAPIBody();
-            var result = await client.GetCompanies(yandexAPIData.YandexAPIBody, CancellationToken.None);
+            var result = await client.GetCompanies(GetCurrent, CancellationToken.None);
+        }
+
+        [Fact]
+        public async Task UpdateCompany()
+        {
+            var client = GetYandexClient();
+            var result = await client.UpdateCompany(UpdateCurrent, CancellationToken.None);
         }
     }
 }
