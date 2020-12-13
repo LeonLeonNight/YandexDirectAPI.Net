@@ -6,10 +6,7 @@ namespace YandexDirectAPI.Net.Campaigns
 {
 
     #region Описание моделей рекламных Объявлений 
-    public class TextCampaignAddItem
-    {
-
-    }
+    
     public class MobileAppCampaignAddItem
     {
 

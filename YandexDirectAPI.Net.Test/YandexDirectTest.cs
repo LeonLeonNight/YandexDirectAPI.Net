@@ -17,7 +17,7 @@ namespace YandexDirectAPI.Net.Test
             Authorization = "Bearer AgAAAAAfpSVrAAa72I2bIlNmy0z5iJBXgaHxU58",
             ClientLogin = "leonnight2017",
             EndPoint = "campaigns",
-            Method = "get"
+            Method = "update"
         };
 
         private static CampaignGetRequest GetCurrent = YandexDirectModelTest.CurrentGetMethod;

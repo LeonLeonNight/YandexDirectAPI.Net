@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using YandexDirectAPI.Net.Campaigns.CampaignTypes;
 
 namespace YandexDirectAPI.Net.Campaigns
 {
@@ -22,16 +23,16 @@ namespace YandexDirectAPI.Net.Campaigns
         public string StartDate { get; set; }
 
         [JsonProperty(Order = 4)]
-        public CampaignTypeEnum Types { get; set; }
+        public CampaignTypeEnum? Types { get; set; }
 
         [JsonProperty(Order = 5)]
-        public CampaignStateEnum States { get; set; }
+        public CampaignStateEnum? States { get; set; }
 
         [JsonProperty(Order = 6)]
-        public CampaignStatusSelectionEnum Statuses { get; set; }
+        public CampaignStatusSelectionEnum? Statuses { get; set; }
 
         [JsonProperty(Order = 7)]
-        public CampaignStatusPaymentEnum StatusesPayment { get; set; }
+        public CampaignStatusPaymentEnum? StatusesPayment { get; set; }
 
         [JsonProperty(Order = 8)]
         public string StatusClarification { get; set; }
@@ -46,7 +47,7 @@ namespace YandexDirectAPI.Net.Campaigns
         /// Валюта кампании.
         /// </summary>
         [JsonProperty(Order = 11)]
-        public CurrencyEnum Currency { get; set; }
+        public CurrencyEnum? Currency { get; set; }
 
         [JsonProperty(Order = 12)]
         public FundsParam Funds { get; set; }
@@ -77,7 +78,7 @@ namespace YandexDirectAPI.Net.Campaigns
         /// Текстово-графические объявления
         /// </summary>
         [JsonProperty(Order = 19)]
-        public TextCampaignAddItem TextCampaign { get; set; }
+        public TextCampaignUpdateItem TextCampaign { get; set; }
         /// <summary>
         /// Реклама мобильных приложений
         /// </summary>

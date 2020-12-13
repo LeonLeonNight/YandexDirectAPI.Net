@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using YandexDirectAPI.Net.Campaigns;
+using YandexDirectAPI.Net.Campaigns.CampaignTypes;
 
 namespace YandexDirectAPI.Net.Test
 {
@@ -72,7 +73,23 @@ namespace YandexDirectAPI.Net.Test
                     @method = "update",
                     @params = new CampaignUpdateParameters
                     {
-
+                        Campaigns = new List<Campaign>
+                        {
+                            new Campaign
+                            {
+                                  Id = 403233,
+                                  TextCampaign = new TextCampaignUpdateItem
+                                  {
+                                      BiddingStrategy = new TextCampaignStrategy
+                                      {
+                                          Network = new TextCampaignNetworkStrategyAdd
+                                          {
+                                              BiddingStrategyType = Enum.GetName(typeof(TextCampaignNetworkStrategyTypeEnum), 3)
+                                          }
+                                      }
+                                  }
+                            }
+                        }
                     }
                 }
             }
