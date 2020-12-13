@@ -92,6 +92,30 @@ namespace YandexDirectAPI.Net
                 $"Response: {JsonConvert.SerializeObject(response, ContentSerializerSettings)}");
             return response;
         }
+        
+        public async Task<CampaignDeleteResponse> DeleteCompany(
+            CampaignDeleteRequest parameters,
+            CancellationToken ct = default)
+        {
+            parameters.method = Head.Method;
+
+            Log?.Invoke(
+                $"For endpoint: {Head.EndPoint} \n" +
+                $"Request: {JsonConvert.SerializeObject(parameters, ContentSerializerSettings)}");
+
+            var responseContent = await RestDeleteAsync(
+                Head.EndPoint,
+                HttpMethod.Post,
+                parameters,
+                ct);
+
+            var response = JsonConvert.DeserializeObject<CampaignDeleteResponse>(responseContent);
+
+            Log?.Invoke(
+                $"For endpoint: {Head.EndPoint} \n" +
+                $"Response: {JsonConvert.SerializeObject(response, ContentSerializerSettings)}");
+            return response;
+        }
 
         public async Task<string> RestGetAsync(
             string endPointUrl,
@@ -120,6 +144,29 @@ namespace YandexDirectAPI.Net
             string endPointUrl,
             HttpMethod httpMethod,
             CampaignUpdateRequest model,
+            CancellationToken ct)
+        {
+            HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var content = (model != null)
+                ? JsonConvert.SerializeObject(model, ContentSerializerSettings)
+                : string.Empty;
+
+            var request = GetHeaders(endPointUrl, httpMethod, content);
+            
+            var response = await HttpClient.SendAsync(request, ct).ConfigureAwait(false);
+
+            var responseContent = !response.Content.Equals(null)
+                    ? await response.Content.ReadAsStringAsync().ConfigureAwait(false)
+                    : null;
+
+            return responseContent;
+        }
+        
+        public async Task<string> RestDeleteAsync(
+            string endPointUrl,
+            HttpMethod httpMethod,
+            CampaignDeleteRequest model,
             CancellationToken ct)
         {
             HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));

@@ -4,12 +4,11 @@ using System.Text;
 
 namespace YandexDirectAPI.Net.Campaigns
 {
-    public class CampaignUpdateResponse : StatusMessage
+    public class CampaignDeleteResponse : StatusMessage
     {
-        public UpdateResult result { get; set; }
+        public DeleteResult result { get; set; }
     }
-
-    public class UpdateResult
+    public class DeleteResult
     {
         public List<ActionResult> UpdateResults { get; set; }
     }

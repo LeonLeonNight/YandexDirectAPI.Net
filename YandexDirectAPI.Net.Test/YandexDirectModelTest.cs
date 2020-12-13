@@ -10,7 +10,7 @@ namespace YandexDirectAPI.Net.Test
     {
         private const string Get1 = nameof(Get1);
         private const string Update1 = nameof(Update1);
-        private const string Delete = nameof(Delete);
+        private const string Delete1 = nameof(Delete1);
 
         public static Dictionary<string, CampaignGetRequest> GetBodies = new Dictionary<string, CampaignGetRequest>
         {
@@ -19,7 +19,7 @@ namespace YandexDirectAPI.Net.Test
                 Get1, new CampaignGetRequest
                 {
                     @method = "get",
-                    @params = new YandexGetParameters
+                    @params = new CampaignGetParameters
                     {
                         SelectionCriteria = new SelectionCriterias()
                         {
@@ -51,14 +51,6 @@ namespace YandexDirectAPI.Net.Test
                             "Type"
                         }
                     }
-                }
-            },
-
-            //Delete
-            {
-                Delete, new CampaignGetRequest
-                {
-
                 }
             },
         };
@@ -95,5 +87,24 @@ namespace YandexDirectAPI.Net.Test
             }
         };
         public static CampaignUpdateRequest CurrentUpdateMethod = UpdateBodies[Update1];
+
+        public static Dictionary<string, CampaignDeleteRequest> DeleteBodies = new Dictionary<string, CampaignDeleteRequest>
+        {
+            //Delete
+            {
+                Delete1, new CampaignDeleteRequest
+                {
+                    method = "delete",
+                    @params = new CampaignDeleteParameters
+                    {
+                        SelectionCriteria = new IdsCriteria
+                        {
+                             Ids = new long[] { 402837 }
+                        }
+                    }
+                }
+            }
+        };
+        public static CampaignDeleteRequest CurrentDeleteMethod = DeleteBodies[Delete1];
     }
 }

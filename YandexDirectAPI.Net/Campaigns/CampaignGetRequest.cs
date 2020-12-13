@@ -7,9 +7,9 @@ namespace YandexDirectAPI.Net.Campaigns
     public class CampaignGetRequest
     {
         public string @method { get; set; }
-        public YandexGetParameters @params { get; set; }
+        public CampaignGetParameters @params { get; set; }
     }
-    public class YandexGetParameters
+    public class CampaignGetParameters
     {
         public SelectionCriterias SelectionCriteria { get; set; }
         public string[] FieldNames { get; set; }

@@ -17,11 +17,12 @@ namespace YandexDirectAPI.Net.Test
             Authorization = "Bearer AgAAAAAfpSVrAAa72I2bIlNmy0z5iJBXgaHxU58",
             ClientLogin = "leonnight2017",
             EndPoint = "campaigns",
-            Method = "update"
+            Method = "delete"
         };
 
         private static CampaignGetRequest GetCurrent = YandexDirectModelTest.CurrentGetMethod;
         private static CampaignUpdateRequest UpdateCurrent = YandexDirectModelTest.CurrentUpdateMethod;
+        private static CampaignDeleteRequest DeleteCurrent = YandexDirectModelTest.CurrentDeleteMethod;
 
         public YandexDirectTest(ITestOutputHelper output)
         {
@@ -59,6 +60,13 @@ namespace YandexDirectAPI.Net.Test
         {
             var client = GetYandexClient();
             var result = await client.UpdateCompany(UpdateCurrent, CancellationToken.None);
+        }
+        
+        [Fact]
+        public async Task DeleteCompany()
+        {
+            var client = GetYandexClient();
+            var result = await client.DeleteCompany(DeleteCurrent, CancellationToken.None);
         }
     }
 }
