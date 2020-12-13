@@ -45,18 +45,8 @@ namespace YandexDirectAPI.Net
             };
         }
 
-        public void RouterEnpoint(
-            YandexHeader header,
-            YandexGetRequest body)
-        {
-            //switch (header.EndPoint)
-            //{
-            //    case "campaigns":
-            //}
-        }
-
-        public async Task<YandexAPIResponse> GetCompanies(
-            YandexGetRequest parameters,
+        public async Task<CampaignGetResponse> GetCompanies(
+            CampaignGetRequest parameters,
             CancellationToken ct = default)
         {
             parameters.method = Head.Method;
@@ -71,7 +61,7 @@ namespace YandexDirectAPI.Net
                 parameters,
                 ct);
 
-            var response = JsonConvert.DeserializeObject<YandexAPIResponse>(responseContent);
+            var response = JsonConvert.DeserializeObject<CampaignGetResponse>(responseContent);
 
             Log?.Invoke(
                 $"For endpoint: {Head.EndPoint} \n" +
@@ -79,8 +69,8 @@ namespace YandexDirectAPI.Net
             return response;
         }
         
-        public async Task<YandexAPIResponse> UpdateCompany(
-            YandexUpdateRequest parameters,
+        public async Task<CampaignUpdateResponse> UpdateCompany(
+            CampaignUpdateRequest parameters,
             CancellationToken ct = default)
         {
             parameters.method = Head.Method;
@@ -95,7 +85,7 @@ namespace YandexDirectAPI.Net
                 parameters,
                 ct);
 
-            var response = JsonConvert.DeserializeObject<YandexAPIResponse>(responseContent);
+            var response = JsonConvert.DeserializeObject<CampaignUpdateResponse>(responseContent);
 
             Log?.Invoke(
                 $"For endpoint: {Head.EndPoint} \n" +
@@ -106,7 +96,7 @@ namespace YandexDirectAPI.Net
         public async Task<string> RestGetAsync(
             string endPointUrl,
             HttpMethod httpMethod,
-            YandexGetRequest model,
+            CampaignGetRequest model,
             CancellationToken ct)
         {
             HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -129,7 +119,7 @@ namespace YandexDirectAPI.Net
         public async Task<string> RestUpdateAsync(
             string endPointUrl,
             HttpMethod httpMethod,
-            YandexUpdateRequest model,
+            CampaignUpdateRequest model,
             CancellationToken ct)
         {
             HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));

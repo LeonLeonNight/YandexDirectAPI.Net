@@ -20,8 +20,8 @@ namespace YandexDirectAPI.Net.Test
             Method = "get"
         };
 
-        private static YandexGetRequest GetCurrent = YandexDirectModelTest.CurrentGetMethod;
-        private static YandexUpdateRequest UpdateCurrent = YandexDirectModelTest.CurrentUpdateMethod;
+        private static CampaignGetRequest GetCurrent = YandexDirectModelTest.CurrentGetMethod;
+        private static CampaignUpdateRequest UpdateCurrent = YandexDirectModelTest.CurrentUpdateMethod;
 
         public YandexDirectTest(ITestOutputHelper output)
         {

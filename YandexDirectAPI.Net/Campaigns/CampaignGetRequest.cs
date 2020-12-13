@@ -4,7 +4,7 @@ using System.Text;
 
 namespace YandexDirectAPI.Net.Campaigns
 {
-    public class YandexGetRequest
+    public class CampaignGetRequest
     {
         public string @method { get; set; }
         public YandexGetParameters @params { get; set; }

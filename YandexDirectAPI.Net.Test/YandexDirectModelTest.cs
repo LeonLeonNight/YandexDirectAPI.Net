@@ -11,11 +11,11 @@ namespace YandexDirectAPI.Net.Test
         private const string Update1 = nameof(Update1);
         private const string Delete = nameof(Delete);
 
-        public static Dictionary<string, YandexGetRequest> GetBodies = new Dictionary<string, YandexGetRequest>
+        public static Dictionary<string, CampaignGetRequest> GetBodies = new Dictionary<string, CampaignGetRequest>
         {
             //Get
             {
-                Get1, new YandexGetRequest
+                Get1, new CampaignGetRequest
                 {
                     @method = "get",
                     @params = new YandexGetParameters
@@ -55,28 +55,28 @@ namespace YandexDirectAPI.Net.Test
 
             //Delete
             {
-                Delete, new YandexGetRequest
+                Delete, new CampaignGetRequest
                 {
 
                 }
             },
         };
-        public static YandexGetRequest CurrentGetMethod = GetBodies[Get1];
+        public static CampaignGetRequest CurrentGetMethod = GetBodies[Get1];
 
-        public static Dictionary<string, YandexUpdateRequest> UpdateBodies = new Dictionary<string, YandexUpdateRequest>
+        public static Dictionary<string, CampaignUpdateRequest> UpdateBodies = new Dictionary<string, CampaignUpdateRequest>
         {
             { 
                 //Update
-                Update1, new YandexUpdateRequest
+                Update1, new CampaignUpdateRequest
                 {
                     @method = "update",
-                    @params = new YandexUpdateParameters
+                    @params = new CampaignUpdateParameters
                     {
 
                     }
                 }
             }
         };
-        public static YandexUpdateRequest CurrentUpdateMethod = UpdateBodies[Update1];
+        public static CampaignUpdateRequest CurrentUpdateMethod = UpdateBodies[Update1];
     }
 }

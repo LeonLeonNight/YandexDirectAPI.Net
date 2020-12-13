@@ -12,7 +12,7 @@ namespace YandexDirectAPI.Net.Campaigns
         [JsonProperty(Order = 1)]
         public long Id { get; set; }
 
-        [JsonProperty(Order = 2)]
+        [JsonProperty(Order = 2), MaxLength(255)]
         public string Name { get; set; }
         /// <summary>
         /// Дата начала показов объявлений в формате YYYY-MM-DD. Должна быть не меньше текущей даты.
@@ -100,7 +100,7 @@ namespace YandexDirectAPI.Net.Campaigns
         public SmartCampaignAddItem SmartCampaign { get; set; }
         #endregion
 
-        [JsonProperty(Order = 24)]
+        [JsonProperty(Order = 24), MaxLength(255)]
         public string ClientInfo { get; set; }
 
         [JsonProperty(Order = 25)]
@@ -270,13 +270,5 @@ namespace YandexDirectAPI.Net.Campaigns
     {
         Yes,
         No
-    }
-
-    public class Error
-    {
-        public string error_string { get; set; }
-        public string error_detail { get; set; }
-        public string request_id { get; set; }
-        public string error_code { get; set; }
     }
 }
