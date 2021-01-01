@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Description>Реализация методов YandexDirectAPI для платформы .Net</Description>
+    <Copyright>Соловьев Николай Владимирович, 2020 год</Copyright>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
