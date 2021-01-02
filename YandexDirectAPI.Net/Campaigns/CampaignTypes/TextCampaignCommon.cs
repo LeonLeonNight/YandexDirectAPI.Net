@@ -5,7 +5,7 @@ using System.Text;
 
 namespace YandexDirectAPI.Net.Campaigns.CampaignTypes
 {
-    public class TextCampaignUpdateItem
+    public class TextCampaignCommon
     {
         public TextCampaignStrategy BiddingStrategy { get; set; }
         public TextCampaignSetting Settings { get; set; }
@@ -25,7 +25,7 @@ namespace YandexDirectAPI.Net.Campaigns.CampaignTypes
     public class TextCampaignStrategy
     {
         public TextCampaignSearchStrategy Search { get; set; }
-        public TextCampaignNetworkStrategyAdd Network { get; set; }
+        public TextCampaignNetworkStrategy Network { get; set; }
     }
 
     #region Search
@@ -40,19 +40,6 @@ namespace YandexDirectAPI.Net.Campaigns.CampaignTypes
         public StrategyWeeklyClickPackage WeeklyClickPackage { get; set; }
         public StrategyAverageRoi AverageRoi { get; set; }
         public StrategyPayForConversion PayForConversion { get; set; }
-    }
-
-    public enum TextCampaignSearchStrategyTypeEnum
-    {
-        AVERAGE_CPA,
-        AVERAGE_ROI,
-        AVERAGE_CPC,
-        HIGHEST_POSITION,
-        PAY_FOR_CONVERSION,
-        SERVING_OFF,
-        WB_MAXIMUM_CLICKS,
-        WB_MAXIMUM_CONVERSION_RATE,
-        WEEKLY_CLICK_PACKAGE
     }
 
     public class StrategyMaximumClicks
@@ -101,10 +88,10 @@ namespace YandexDirectAPI.Net.Campaigns.CampaignTypes
     }
     #endregion
     #region Network
-    public class TextCampaignNetworkStrategyAdd
+    public class TextCampaignNetworkStrategy
     {
         public string BiddingStrategyType { get; set; }
-        public StrategyNetworkDefaultAdd NetworkDefault { get; set; }
+        public StrategyNetworkDefault NetworkDefault { get; set; }
         public StrategyMaximumClicks WbMaximumClicks { get; set; }
         public StrategyMaximumConversionRate WbMaximumConversionRate { get; set; }
         public StrategyAverageCpc AverageCpc { get; set; }
@@ -126,7 +113,7 @@ namespace YandexDirectAPI.Net.Campaigns.CampaignTypes
         WB_MAXIMUM_CONVERSION_RATE,
         WEEKLY_CLICK_PACKAGE
     }
-    public class StrategyNetworkDefaultAdd
+    public class StrategyNetworkDefault
     {
         public int LimitPercent { get; set; }
     }

@@ -70,11 +70,11 @@ namespace YandexDirectAPI.Net.Test
                             new Campaign
                             {
                                   Id = 403233,
-                                  TextCampaign = new TextCampaignUpdateItem
+                                  TextCampaign = new TextCampaignCommon
                                   {
                                       BiddingStrategy = new TextCampaignStrategy
                                       {
-                                          Network = new TextCampaignNetworkStrategyAdd
+                                          Network = new TextCampaignNetworkStrategy
                                           {
                                               BiddingStrategyType = Enum.GetName(typeof(TextCampaignNetworkStrategyTypeEnum), 3)
                                           }

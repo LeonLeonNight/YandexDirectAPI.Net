@@ -78,7 +78,7 @@ namespace YandexDirectAPI.Net.Campaigns
         /// Текстово-графические объявления
         /// </summary>
         [JsonProperty(Order = 19)]
-        public TextCampaignUpdateItem TextCampaign { get; set; }
+        public TextCampaignCommon TextCampaign { get; set; }
         /// <summary>
         /// Реклама мобильных приложений
         /// </summary>
