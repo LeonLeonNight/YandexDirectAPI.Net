@@ -16,7 +16,7 @@ namespace YandexDirectAPI.Net
         public string EndPoint { get; set; }
         public string Method { get; set; }
     }
-    public class YandexDirectClient
+    public class YandexDirectClient : IDisposable
     {
         private string BaseEndPoint = "https://api-sandbox.direct.yandex.com/json/v5/";
         private static readonly HttpClient HttpClient = new HttpClient();
@@ -55,20 +55,34 @@ namespace YandexDirectAPI.Net
                 $"For endpoint: {Head.EndPoint} \n" +
                 $"Request: {JsonConvert.SerializeObject(parameters, ContentSerializerSettings)}");
 
-            var responseContent = await RestGetAsync(
-                Head.EndPoint,
-                HttpMethod.Post,
-                parameters,
-                ct);
+            //var responseContent = await RestGetAsync(
+            //    Head.EndPoint,
+            //    HttpMethod.Post,
+            //    parameters,
+            //    ct);
 
-            var response = JsonConvert.DeserializeObject<CampaignGetResponse>(responseContent);
+            HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var content = (parameters != null)
+                ? JsonConvert.SerializeObject(parameters, ContentSerializerSettings)
+                : string.Empty;
+
+            var request = GetHeaders(Head.EndPoint, HttpMethod.Post, content);
+
+            var response = await HttpClient.SendAsync(request, ct).ConfigureAwait(false);
+
+            var responseContent = !response.Content.Equals(null)
+                    ? await response.Content.ReadAsStringAsync().ConfigureAwait(true)
+                    : null;
+
+            var result = JsonConvert.DeserializeObject<CampaignGetResponse>(responseContent);
 
             Log?.Invoke(
                 $"For endpoint: {Head.EndPoint} \n" +
-                $"Response: {JsonConvert.SerializeObject(response, ContentSerializerSettings)}");
-            return response;
+                $"Response: {JsonConvert.SerializeObject(result, ContentSerializerSettings)}");
+            return result;
         }
-        
+
         public async Task<CampaignUpdateResponse> UpdateCompany(
             CampaignUpdateRequest parameters,
             CancellationToken ct = default)
@@ -92,7 +106,7 @@ namespace YandexDirectAPI.Net
                 $"Response: {JsonConvert.SerializeObject(response, ContentSerializerSettings)}");
             return response;
         }
-        
+
         public async Task<CampaignDeleteResponse> DeleteCompany(
             CampaignDeleteRequest parameters,
             CancellationToken ct = default)
@@ -130,16 +144,16 @@ namespace YandexDirectAPI.Net
                 : string.Empty;
 
             var request = GetHeaders(endPointUrl, httpMethod, content);
-            
+
             var response = await HttpClient.SendAsync(request, ct).ConfigureAwait(false);
 
             var responseContent = !response.Content.Equals(null)
-                    ? await response.Content.ReadAsStringAsync().ConfigureAwait(false)
+                    ? await response.Content.ReadAsStringAsync().ConfigureAwait(true)
                     : null;
 
             return responseContent;
         }
-        
+
         public async Task<string> RestUpdateAsync(
             string endPointUrl,
             HttpMethod httpMethod,
@@ -153,7 +167,7 @@ namespace YandexDirectAPI.Net
                 : string.Empty;
 
             var request = GetHeaders(endPointUrl, httpMethod, content);
-            
+
             var response = await HttpClient.SendAsync(request, ct).ConfigureAwait(false);
 
             var responseContent = !response.Content.Equals(null)
@@ -162,7 +176,7 @@ namespace YandexDirectAPI.Net
 
             return responseContent;
         }
-        
+
         public async Task<string> RestDeleteAsync(
             string endPointUrl,
             HttpMethod httpMethod,
@@ -176,7 +190,7 @@ namespace YandexDirectAPI.Net
                 : string.Empty;
 
             var request = GetHeaders(endPointUrl, httpMethod, content);
-            
+
             var response = await HttpClient.SendAsync(request, ct).ConfigureAwait(false);
 
             var responseContent = !response.Content.Equals(null)
@@ -211,6 +225,11 @@ namespace YandexDirectAPI.Net
                 Replace(" ", "");
 
             return outText;
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }
