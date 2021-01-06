@@ -23,16 +23,16 @@ namespace YandexDirectAPI.Net.Campaigns
         public string StartDate { get; set; }
 
         [JsonProperty(Order = 4)]
-        public CampaignTypeEnum? Types { get; set; }
+        public string Type { get; set; }
 
         [JsonProperty(Order = 5)]
-        public CampaignStateEnum? States { get; set; }
+        public string State { get; set; }
 
         [JsonProperty(Order = 6)]
-        public CampaignStatusSelectionEnum? Statuses { get; set; }
+        public string Status { get; set; }
 
         [JsonProperty(Order = 7)]
-        public CampaignStatusPaymentEnum? StatusesPayment { get; set; }
+        public string StatusPayment { get; set; }
 
         [JsonProperty(Order = 8)]
         public string StatusClarification { get; set; }
@@ -47,7 +47,7 @@ namespace YandexDirectAPI.Net.Campaigns
         /// Валюта кампании.
         /// </summary>
         [JsonProperty(Order = 11)]
-        public CurrencyEnum? Currency { get; set; }
+        public string Currency { get; set; }
 
         [JsonProperty(Order = 12)]
         public FundsParam Funds { get; set; }
@@ -156,7 +156,7 @@ namespace YandexDirectAPI.Net.Campaigns
         /// <summary>
         /// Тип финансовых показателей кампании
         /// </summary>
-        public CampaignFundsEnum Mode { get; set; }
+        public string Mode { get; set; }
         /// <summary>
         /// Финансовые показатели кампании, в случае если общий счет не подключен.
         /// </summary>
@@ -203,7 +203,7 @@ namespace YandexDirectAPI.Net.Campaigns
         [Required]
         public long Amount { get; set; }
         [Required]
-        public DailyBudgetModeEnum DailyBudgetModeEnum { get; set; }
+        public string DailyBudgetModeEnum { get; set; }
     }
     public enum DailyBudgetModeEnum
     {
@@ -214,13 +214,13 @@ namespace YandexDirectAPI.Net.Campaigns
     public class TimeTargeting
     {
         public Shedule Shedule { get; set; }
-        public YesNoEnum ConsiderWorkingWeekends { get; set; }
+        public string ConsiderWorkingWeekends { get; set; }
         public TimeTargetingOnPublicHolidays HolidaysSchedule { get; set; }
     }
 
     public class TimeTargetingOnPublicHolidays
     {
-        public YesNoEnum SuspendOnHolidays { get; set; }
+        public string SuspendOnHolidays { get; set; }
         public int BidPercent { get; set; }
         public int StartHour { get; set; }
         public int EndHour { get; set; }
@@ -233,7 +233,7 @@ namespace YandexDirectAPI.Net.Campaigns
 
     public class SmsSettings
     {
-        public SmsEventsEnum SmsEventsEnum { get; set; }
+        public string SmsEventsEnum { get; set; }
         /// <summary>
         /// Время, начиная с которого разрешено отправлять SMS о событиях, связанных с кампанией. Указывается в формате HH:MM, минуты задают кратно 15 (0, 15, 30, 45). Например, 19:45. Значение по умолчанию 9:00.
         /// </summary>
@@ -255,15 +255,13 @@ namespace YandexDirectAPI.Net.Campaigns
 
     public class EmailSettings
     {
-        public string Enail { get; set; }
+        public string Email { get; set; }
         [DefaultValue(60)]
         public int? CheckPositionInterval { get; set; }
         [DefaultValue(20)]
         public int? WarningBalance { get; set; }
-        [DefaultValue("NO")]
-        public YesNoEnum? SendAccountNews { get; set; }
-        [DefaultValue("NO")]
-        public YesNoEnum? SendWarnings { get; set; }
+        public string SendAccountNews { get; set; }
+        public string SendWarnings { get; set; }
 
     }
 
