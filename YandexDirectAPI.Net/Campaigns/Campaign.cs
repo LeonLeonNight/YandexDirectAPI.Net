@@ -83,12 +83,12 @@ namespace YandexDirectAPI.Net.Campaigns
         /// Реклама мобильных приложений
         /// </summary>
         [JsonProperty(Order = 20)]
-        public MobileAppCampaignAddItem MobileAppCampaign { get; set; }
+        public MobileAppCampaignCommon MobileAppCampaign { get; set; }
         /// <summary>
         /// Динамические объявления
         /// </summary>
         [JsonProperty(Order = 21)]
-        public DynamicTextCampaignAddItem DynamicTextCampaign { get; set; }
+        public DynamicTextCampaignCommon DynamicTextCampaign { get; set; }
         /// <summary>
         /// Медийная кампания
         /// </summary>
