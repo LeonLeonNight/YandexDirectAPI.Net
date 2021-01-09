@@ -23,7 +23,8 @@ namespace YandexDirectAPI.Net.Test
                     {
                         SelectionCriteria = new SelectionCriterias()
                         {
-                            Ids = new long?[] { } //402835, 402836, 402837
+                            Ids = new long?[] { }, //402835, 402836, 402837
+                             Statuses = new string[] { "ACCEPTED" }
                         },
                         FieldNames = new string[]
                         {

@@ -30,7 +30,7 @@ namespace YandexDirectAPI.Net.Campaigns
         public long?[] Ids { get; set; }
         public CampaignTypeEnum?[] Types { get; set; }
         public CampaignStateEnum?[] States { get; set; }
-        public CampaignStatusSelectionEnum?[] Statuses { get; set; }
+        public string[] Statuses { get; set; }
         public CampaignStatusPaymentEnum?[] StatusesPayment { get; set; }
 
     }

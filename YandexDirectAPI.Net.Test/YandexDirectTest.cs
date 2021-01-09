@@ -16,8 +16,7 @@ namespace YandexDirectAPI.Net.Test
         {
             Authorization = "Bearer AgAAAAAfpSVrAAa72I2bIlNmy0z5iJBXgaHxU58",
             ClientLogin = "leonnight2017",
-            EndPoint = "campaigns",
-            Method = "get"
+            BaseEndPoint = "https://api-sandbox.direct.yandex.com/json/v5/"
         };
 
         private static CampaignGetRequest GetCurrent = YandexDirectModelTest.CurrentGetMethod;
@@ -35,13 +34,12 @@ namespace YandexDirectAPI.Net.Test
             CultureInfo.DefaultThreadCurrentUICulture = culture;
         }
 
-        private YandexDirectClient GetYandexClient()
+        private CampaignClient GetYandexClient()
         {
-            return new YandexDirectClient(
+            return new CampaignClient(
                 options.Authorization,
                 options.ClientLogin,
-                options.EndPoint,
-                options.Method)
+                options.BaseEndPoint)
             {
                 Log = x => _output.WriteLine(x),
                 RawLog = y => _output.WriteLine($"<rawLog>{y}</rawLog>")
