@@ -61,12 +61,30 @@ namespace YandexDirectAPI.Net.Campaigns.CampaignTypes
 
     public class CampaignSettings
     {
+        /// <summary>
+        /// "ADD_METRICA_TAG" | "ADD_OPENSTAT_TAG" | "ADD_TO_FAVORITES" | "ENABLE_AREA_OF_INTEREST_TARGETING" | "ENABLE_COMPANY_INFO" | "ENABLE_EXTENDED_AD_TITLE" | "ENABLE_SITE_MONITORING" | "REQUIRE_SERVICING"
+        /// </summary>
         public string Option { get; set; }
+        /// <summary>
+        /// ( "YES" | "NO" )
+        /// </summary>
         public string Value { get; set; }
     }
     public class StrategyMaximumAppInstalls
     {
         public long WeeklySpendLimit { get; set; }
         public long? BidCeiling { get; set; }
+    }
+    public class StrategyAverageCpcPerCampaign
+    {
+        public long AverageCpc { get; set; }
+        public long WeeklySpendLimit { get; set; }
+        public long BidCelling { get; set; }
+    }
+    public class StrategyAverageCpcPerFilter
+    {
+        public long FilterAverageCpc { get; set; }
+        public long WeeklySpendLimit { get; set; }
+        public long BidCelling { get; set; }
     }
 }
