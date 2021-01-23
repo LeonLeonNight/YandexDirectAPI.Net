@@ -20,10 +20,10 @@ namespace YandexDirectAPI.Net.Campaigns.CampaignTypes
         public long? WeeklySpendLimit { get; set; }
         public long AverageCpc { get; set; }
     }
-    public class StrategyAverageCpa
+    public class StrategyAverageCpaCampaign
     {
-        public long? WeeklySpendLimit { get; set; }
-        public long? BidCeiling { get; set; }
+        public long WeeklySpendLimit { get; set; }
+        public long BidCeiling { get; set; }
         public long GoalId { get; set; }
         public long AverageCpa { get; set; }
     }
@@ -44,9 +44,9 @@ namespace YandexDirectAPI.Net.Campaigns.CampaignTypes
         public int ReserveReturn { get; set; }
         public long RoiCoef { get; set; }
         public long GoalId { get; set; }
-        public long? WeeklySpendLimit { get; set; }
-        public long? BidCeiling { get; set; }
-        public long? Profitability { get; set; }
+        public long WeeklySpendLimit { get; set; }
+        public long BidCeiling { get; set; }
+        public long Profitability { get; set; }
     }
     public class StrategyPayForConversion
     {
@@ -75,16 +75,32 @@ namespace YandexDirectAPI.Net.Campaigns.CampaignTypes
         public long WeeklySpendLimit { get; set; }
         public long? BidCeiling { get; set; }
     }
-    public class StrategyAverageCpcPerCampaign
+    public class StrategyAverageCpcCampaign
     {
         public long AverageCpc { get; set; }
         public long WeeklySpendLimit { get; set; }
         public long BidCelling { get; set; }
     }
-    public class StrategyAverageCpcPerFilter
+    public class StrategyAverageCpcFilter
     {
         public long FilterAverageCpc { get; set; }
         public long WeeklySpendLimit { get; set; }
         public long BidCelling { get; set; }
+    }    
+    public class StrategyAverageCpaFilter
+    {
+        public long WeeklySpendLimit { get; set; }
+        public long BidCeiling { get; set; }
+        public long GoalId { get; set; }
+        public long FilterCpa { get; set; }
+    }
+    public class PriorityGoalsArray
+    {
+        public List<PriorityGoalsItem> Items { get; set; }
+    }
+    public class PriorityGoalsItem
+    {
+        public long GoalId { get; set; }
+        public long Value { get; set; }
     }
 }

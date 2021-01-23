@@ -28,7 +28,7 @@ namespace YandexDirectAPI.Net.Campaigns.CampaignTypes
         public StrategyMaximumClicks WbMaximumClicks { get; set; }
         public StrategyMaximumConversionRate WbMaximumConversionRate { get; set; }
         public StrategyAverageCpc AverageCpc { get; set; }
-        public StrategyAverageCpa AverageCpa { get; set; }
+        public StrategyAverageCpaCampaign AverageCpa { get; set; }
         public StrategyWeeklyClickPackage WeeklyClickPackage { get; set; }
         public StrategyAverageRoi AverageRoi { get; set; }
         public StrategyPayForConversion PayForConversion { get; set; }
