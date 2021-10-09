@@ -86,7 +86,7 @@ namespace YandexDirectAPI.Net.Campaigns.CampaignTypes
         public long FilterAverageCpc { get; set; }
         public long WeeklySpendLimit { get; set; }
         public long BidCelling { get; set; }
-    }    
+    }
     public class StrategyAverageCpaFilter
     {
         public long WeeklySpendLimit { get; set; }
@@ -102,5 +102,31 @@ namespace YandexDirectAPI.Net.Campaigns.CampaignTypes
     {
         public long GoalId { get; set; }
         public long Value { get; set; }
+    }
+    public class StrategyWbMaximumImpressions
+    {
+        public long AverageCpm { get; set; }
+        public long SpendLint { get; set; }
+    }
+    public class StrategyCpMaximumImpressions
+    {
+        public long AverageCpm { get; set; }
+        public long SpendLimit { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
+        public string AutoContinue { get; set; }
+    }
+    public class StrategyWbDecreasedPriceForRepeatedImpressions
+    {
+        public long AverageCpm { get; set; }
+        public long SpendLimit { get; set; }
+    }
+    public class StrategyCpDecreasedPriceForRepeatedImpressions 
+    {
+        public long AverageCpm { get; set; }
+        public long SpendLimit { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
+        public string AutoContinue { get; set; }
     }
 }

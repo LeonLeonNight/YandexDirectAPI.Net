@@ -5,6 +5,17 @@ using System.Text;
 
 namespace YandexDirectAPI.Net.Campaigns.CampaignTypes
 {
+    public class TextCampaignPostRequest
+    {
+        public string @method { get; set; }
+        public TextCampaignCommon @params { get; set; }
+    }
+
+    public class TextCampaignPostResult : CampaignAddResult
+    {
+
+    }
+
     public class TextCampaignCommon
     {
         public TextCampaignStrategy BiddingStrategy { get; set; }
